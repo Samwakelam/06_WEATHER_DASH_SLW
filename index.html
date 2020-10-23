@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Insert Title</title>
+
+    <!-- add icon link -->
+    <link rel = "icon" 
+      href = "assets/images/icon.png"
+      type = "image/x-icon"
+   />
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+        
+    <!-- My basic site style stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+
+    <!-- google fonts  -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+   <main class="">
+
+      
+
+      <header>
+         <div class="row">
+            <h1>Weather Dashboard</h1>
+         </div>
+      </header>
+   
+      
+      <div id="content" class="row">
+   
+         <aside class="col-md-4">
+            <div id="aside">
+
+               <Label for="city-search">Search for a city: </Label>
+               <div class="input-group mb-3">
+                  <input id="city-search" type="text" name="cityName"
+                     class="form-control" 
+                     placeholder="City name..." 
+                     aria-label="Recipient's username" 
+                     aria-describedby="search-btn"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary search-btn" 
+                       type="button" id="search-btn"> 
+                       <img src="assets/images/search-Icon.png" alt="Search Icon" width="20px" height="20px">
+                     </button>
+                  </div>
+                </div>
+
+                <p id="fetch-status"></p>
+
+                <ul id="previous-searches" class="list-group">
+                  
+                </ul>
+
+            </div>
+         </aside>
+   
+         <section class="col-md-8">
+            
+            <article class="row">
+               <div id="article-top" class="article">
+                  <h3 id="city-name">City Name:</h3>
+                  <p id="temperature">Temperature: </p>
+                  <p id="humidity">Humidity: </p>
+                  <p id="wind-speed">Wind Speed: </p>
+                  <p id="uv-index">UV Index: </p>
+               </div>
+            </article>
+
+            <article class="row">
+               <div id="article-bottom" class="article">
+                  <h3 id="five-day-forecast">5 Day Forecast:</h3>
+                  <div class="row fit-content">
+                    <div id="day-one" class="col-sm">
+                       <h5>Date...</h5>
+                       <p class="five-day">Symbol, Temperature, Humidity.</p>
+                    </div>
+                    <div id="day-two" class="col-sm">
+                       <h5>Date...</h5>
+                       <p class="five-day">Symbol, Temperature, Humidity.</p>.
+                    </div>
+                    <div id="day-three" class="col-sm">
+                       <h5>Date...</h5>
+                       <p class="five-day">Symbol, Temperature, Humidity.</p>
+                    </div>
+                    <div id="day-four" class="col-sm">
+                       <h5>Date...</h5>
+                       <p class="five-day">Symbol, Temperature, Humidity.</p>
+                    </div>
+                    <div id="day-five" class="col-sm">
+                       <h5>Date...</h5>
+                       <p class="five-day">Symbol, Temperature, Humidity.</p>
+                    </div>
+                  </div>
+
+               </div>
+            </article>
+               
+         </section>
+   
+      </div>
+
+   </main>
+
+
+    <!-- jQuery CDN -->
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script 
+        type="text/javascript"
+        src="assets/javascript/javascript.js">
+    </script>  
+
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!-- moment CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+   </body>
+</html>
