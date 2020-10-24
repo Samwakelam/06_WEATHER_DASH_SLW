@@ -38,11 +38,11 @@ $(document).ready(function(){
     const citySearchBar     =$("#city-search");
     
     const citySearchButton  =$("#search-btn")
-    citySearchButton.click(searchCity);
-    citySearchButton.click(saveCitySearch);
+    citySearchButton.click(getSearchBarValue);
+    // citySearchButton.click(saveCitySearch);
 
     const cityListItem      =$("#previous-searches");
-    cityListItem.click(historyButtonClicked);
+    cityListItem.on("click", "li",historyButtonClicked);
 
     const fetchStatus       = $("#fetch-status");
 
@@ -52,7 +52,7 @@ $(document).ready(function(){
     const cityTemp      =$("#temperature");
     const cityHumid     =$("#humidity");
     const cityWind      =$("#wind-speed");
-    const cityUV        =$("#uv-value");
+    const cityUV        =$("#uv-index");
 
     // Icon list 
 
@@ -76,9 +76,17 @@ $(document).ready(function(){
     // on click 
     // return city name as lowercase string. 
 
-    function searchCity(){
-        citySearchString  = citySearchBar.val().toLowerCase();
-        console.log("search bar entry = ", citySearchString);
+    function getSearchBarValue(){
+        let searchBarString  = citySearchBar.val().toLowerCase();
+        console.log("search bar entry = ", searchBarString);
+
+        searchCity(searchBarString);
+        saveCitySearch(searchBarString);
+
+    }
+
+    function searchCity(citySearchString){
+        console.log("searchCity function is running with value =",citySearchString);
 
         //API 
         const apiKey = "6596f8a519cb058366e60eae7ab55b85";
@@ -90,8 +98,10 @@ $(document).ready(function(){
 
         // get api call 
         $.ajax({ url: currentWeatherUrl, method: "GET" }).then( function(cityData){
-            [cityLat, cityLon] = dealWithCityData(cityData).then(searchCoordinates(cityLat, cityLon));
-              
+            
+            [cityLat, cityLon] = dealWithCityData(cityData)
+            searchCoordinates(cityLat, cityLon);
+            
         });
 
         return citySearchString;
@@ -129,8 +139,7 @@ $(document).ready(function(){
         // let icon = cityData.weather[0].icon;
 
         cityNameTitle.html(
-            cityData.name +
-            " " );
+            cityData.name + " " + '<img src="http://openweathermap.org/img/w/' + cityData.weather[0].icon + '.png" />');
         cityTemp.html("Temperature: " + cityData.main.temp + '<span class="units"> ºCelsius </span>');
         cityHumid.html("Humidity: " + cityData.main.humidity + '<span class="units"> % </span>');
         cityWind.html("Wind Speed: " + cityData.wind.speed + '<span class="units"> meter/sec </span>');
@@ -143,8 +152,8 @@ $(document).ready(function(){
         return [cityLat, cityLon];
     }
 
-    // when the coordinates have been received show the:
-    // UV
+    // when the coordinates have been received show the: UV
+    // ONE CALL API DEALS WITH THE UV AND THE 5 DAY FORCAST
     function dealWithOneCallData(oneCallData){
         console.log('oneCallData =', oneCallData);
 
@@ -175,97 +184,155 @@ $(document).ready(function(){
         // show 5 day forcast
         // get day 1 and add value 0 
         let dayOne = $("#day-one").html(
-            '<h5>Date...</h5>' +
+            '<h5>' + moment().add(1, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[0].temp.day + ' ºc </p>' +
-            '<p class="five-day">Humidity: ' + oneCallData.daily[0].humidity + ' % </p>'
+            '<p class="five-day">Humidity: ' + oneCallData.daily[0].humidity + ' % </p>' +
+            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[0].weather[0].icon + '.png" />'
         )
 
         let dayTwo = $("#day-two").html(
-            '<h5>Date...</h5>' +
+            '<h5>' + moment().add(2, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[1].temp.day + ' ºc </p>' +
-            '<p class="five-day">Humidity: ' + oneCallData.daily[1].humidity + ' % </p>'
+            '<p class="five-day">Humidity: ' + oneCallData.daily[1].humidity + ' % </p>' +
+            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[1].weather[0].icon + '.png" />'
         )
 
         let dayThree = $("#day-three").html(
-            '<h5>Date...</h5>' +
+            '<h5>' + moment().add(3, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[2].temp.day + ' ºc </p>' +
-            '<p class="five-day">Humidity: ' + oneCallData.daily[2].humidity + ' % </p>'
+            '<p class="five-day">Humidity: ' + oneCallData.daily[2].humidity + ' % </p>' +
+            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[2].weather[0].icon + '.png" />'
         )
 
         let dayFour = $("#day-four").html(
-            '<h5>Date...</h5>' +
+            '<h5>' + moment().add(4, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[3].temp.day + ' ºc </p>' +
-            '<p class="five-day">Humidity: ' + oneCallData.daily[3].humidity + ' % </p>'
+            '<p class="five-day">Humidity: ' + oneCallData.daily[3].humidity + ' % </p>' +
+            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[3].weather[0].icon + '.png" />'
         )
 
         let dayFive = $("#day-five").html(
-            '<h5>Date...</h5>' +
+            '<h5>' + moment().add(5, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[4].temp.day + ' ºc </p>' +
-            '<p class="five-day">Humidity: ' + oneCallData.daily[4].humidity + ' % </p>'
+            '<p class="five-day">Humidity: ' + oneCallData.daily[4].humidity + ' % </p>' +
+            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[4].weather[0].icon + '.png" />'
         )
 
     }
 
+    function initialScreenDisplay(){
+        let dayOne = $("#day-one").html(
+            '<h5>' + moment().add(1, 'days').format('dddd') + '</h5>'
+        )
 
-    let searchHistory= [];
-    if (localStorage.JSON.parse())
+        let dayTwo = $("#day-two").html(
+            '<h5>' + moment().add(2, 'days').format('dddd') + '</h5>'
+        )
 
+        let dayThree = $("#day-three").html(
+            '<h5>' + moment().add(3, 'days').format('dddd') + '</h5>' 
+        )
 
-    function saveCitySearch(){
+        let dayFour = $("#day-four").html(
+            '<h5>' + moment().add(4, 'days').format('dddd') + '</h5>'
+            
+        )
+
+        let dayFive = $("#day-five").html(
+            '<h5>' + moment().add(5, 'days').format('dddd') + '</h5>'
+            
+        )
+    }
+
+    
+    function saveCitySearch(citySearchString){
         console.log("city search is saving");
         
-        if (localStorage.getItem("save city search data") != null) {
+        // if (localStorage.getItem("save city search data") == null) {
+        //     searchHistory = [];
+        // }else {
+        //     let retrieveStorageItem = localStorage.getItem("save city search data");
+        //     searchHistory = JSON.parse(retrieveStorageItem);
+        //     searchHistory.push(citySearchString);
+        // }
 
-            //Display history
-        const retrieveStorageItem = localStorage.getItem("save city search data");
-        const storageItem = JSON.parse(retrieveStorageItem);
-        searchHistory = storageItem;
-        console.log("storageItem =" , storageItem);
-        console.log("storageItem.length =" , storageItem.length);
+        let searchHistory = JSON.parse(localStorage.getItem("save city search data")) || [];
+            console.log(searchHistory, "Getting from LS");
+
+        let isOldSearch = checkCitySearchHistory(citySearchString, searchHistory);
+        console.log("isOldSearch = ", isOldSearch);
+
+        if (isOldSearch == true){
+            console.log("this has been searched before");
+
+        } else {
+            if(searchHistory.length == 9){
+                searchHistory.shift();
+            }
+
+            searchHistory.push(titleCase(citySearchString));
+            console.log("searchHistory = ", searchHistory);
+            // Add to history
+            localStorage.setItem("save city search data", JSON.stringify(searchHistory));
+
+        }
+        
+        //Display history
+        displaySearchHistory();    
+        
+    }
+
+    // CALLED AT THE END FOR AUTO RELOAD AND IN - SaveCitySearch()
+    function displaySearchHistory(){
 
         cityListItem.empty();
-        for (let index = 0; index < storageItem.length; index++) {
+        let searchHistory = JSON.parse(localStorage.getItem("save city search data")) || [];
+        for (let index = 0; index < searchHistory.length; index++) {
             console.log("index =", index);
-            cityListItem.prepend('<li class="list-group-item" onclick="#">' + storageItem[index] + '</li>')
+            cityListItem.prepend('<li class="list-group-item">' + searchHistory[index] + '</li>')
         }
-        }
-            let isNewSearch = checkCitySearchHistory(citySearchString);
-            console.log("isNewSearch = ", isNewSearch);
-
-            if (isNewSearch == true){
-                console.log("this has been searched before");
-
-            } else {
-                if(searchHistory.length == 4){
-                    searchHistory.shift();
-                }
-                searchHistory.push(citySearchString);
-                console.log("searchHistory = ", searchHistory);
-            }
-        
-        // Add to history
-        localStorage.setItem("save city search data", JSON.stringify(searchHistory));
-
-        
 
     }
 
-    function checkCitySearchHistory(citySearch){
-        // I want to search searchHistory 
+    // Moisset,S.(2016).Three ways to title case a sentence in javascript. freecodecamp.org. https://www.freecodecamp.org/news/three-ways-to-title-case-a-sentence-in-javascript-676a9175eb27/
+    function titleCase(stringToConvert) {
+        stringToConvert = stringToConvert.toLowerCase().split(' ');
+        for (var i = 0; i < stringToConvert.length; i++) {
+            stringToConvert[i] = stringToConvert[i].charAt(0).toUpperCase() + stringToConvert[i].slice(1); 
+        }
+        return stringToConvert.join(' ');
+      }
+
+    //CALLED IN - SaveCitySearch()
+    function checkCitySearchHistory(citySearch, searchHistory){
+
+        // I want to search searchHistory array 
         console.log("citySearch = ", citySearch);
 
         let cityHistory = searchHistory.includes(citySearch);
         console.log("has the city been search before? = ", cityHistory);
 
         return cityHistory;
+
     }
 
+    //CALLED BY EVENT LISTENER
     function historyButtonClicked(){
-        console.log("history button clicked = ");
+
+        console.log("history button clicked = ", $(this).text());
+
+        // when button clicked, get the value back
+        let clickedValue = $(this).text();
+        console.log("the button clicked is =", clickedValue);
+
+        //set the search as this value.
+         
+        searchCity(clickedValue);
+
     }
 
-    
-
+    displaySearchHistory();
+    initialScreenDisplay();
 
 
 
