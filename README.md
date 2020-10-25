@@ -51,6 +51,9 @@ A really neat feature would be to change the background with the time of day or 
 
 ## Updates 
 
+(Update 25/10/2020) Icons updated using Weather Icons 222 Weather Themed Icons and CSS. (Flowers,E. Bischoff,L.(2017).Weather Icons 222 Weather Themed Icons and CSS). erikflowers.github.io. https://erikflowers.github.io/weather-icons/.)
+![Screenshot showing update](assets/images/screenshot-update-symbols.png)
+
 ## Credits 
 
 Thanks go out to Colum Lynagh and Andy for helping me overcome issues with overwritting the local storage. 

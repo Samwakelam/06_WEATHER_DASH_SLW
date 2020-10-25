@@ -138,8 +138,35 @@ $(document).ready(function(){
 
         // let icon = cityData.weather[0].icon;
 
+        var symbolDictionary = {
+            '01d': 'wi-day-sunny',
+            '02d': 'wi-day-cloudy',
+            '03d': 'wi-cloud',
+            '04d': 'wi-cloudy',
+            '09d': 'wi-showers',
+            '10d': 'wi-day-rain-mix',
+            '11d': 'wi-thunderstorm',
+            '13d': 'wi-snow',
+            '50d': 'wi-fog',
+            '01n': 'wi-night-clear',
+            '02n': 'wi-night-alt-cloudy',
+            '03n': 'wi-night-alt-cloudy-high',
+            '04n': 'wi-cloudy',
+            '09n': 'wi-night-alt-sprinkle',
+            '10n': 'wi-night-alt-showers',
+            '11n': 'wi-night-alt-thunderstorm',
+            '13n': 'wi-night-alt-snow',
+            '50n': 'wi-night-fog'
+          };
+
+          console.log('cityData =', symbolDictionary[cityData.weather[0].icon] );
+
+        // cityNameTitle.html(
+            // cityData.name + " " + '<img src="http://openweathermap.org/img/w/' + cityData.weather[0].icon + '.png" />');
+        
         cityNameTitle.html(
-            cityData.name + " " + '<img src="http://openweathermap.org/img/w/' + cityData.weather[0].icon + '.png" />');
+            cityData.name + " " + '<i class="wi '+ symbolDictionary[cityData.weather[0].icon] +' main-icon"></i>');
+
         cityTemp.html("Temperature: " + cityData.main.temp + '<span class="units"> ºCelsius </span>');
         cityHumid.html("Humidity: " + cityData.main.humidity + '<span class="units"> % </span>');
         cityWind.html("Wind Speed: " + cityData.wind.speed + '<span class="units"> meter/sec </span>');
@@ -180,6 +207,29 @@ $(document).ready(function(){
             // console.log("UV rating Extream");
             cityUV.html('UV Index: ' + '<span class="uv-index uv-index-extream">' + oneCallData.current.uvi + '</span>');
         };
+
+        var symbolDictionary = {
+            '01d': 'wi-day-sunny',
+            '02d': 'wi-day-cloudy',
+            '03d': 'wi-cloud',
+            '04d': 'wi-cloudy',
+            '09d': 'wi-showers',
+            '10d': 'wi-day-rain-mix',
+            '11d': 'wi-thunderstorm',
+            '13d': 'wi-snow',
+            '50d': 'wi-fog',
+            '01n': 'wi-night-clear',
+            '02n': 'wi-night-alt-cloudy',
+            '03n': 'wi-night-alt-cloudy-high',
+            '04n': 'wi-cloudy',
+            '09n': 'wi-night-alt-sprinkle',
+            '10n': 'wi-night-alt-showers',
+            '11n': 'wi-night-alt-thunderstorm',
+            '13n': 'wi-night-alt-snow',
+            '50n': 'wi-night-fog'
+          };
+
+          
         
         // show 5 day forcast
         // get day 1 and add value 0 
@@ -187,35 +237,43 @@ $(document).ready(function(){
             '<h5>' + moment().add(1, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[0].temp.day + ' ºc </p>' +
             '<p class="five-day">Humidity: ' + oneCallData.daily[0].humidity + ' % </p>' +
-            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[0].weather[0].icon + '.png" />'
+            '<i class="wi '+ symbolDictionary[oneCallData.daily[0].weather[0].icon] +' forecast-icon"></i>'
+            // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[0].weather[0].icon + '.png" />'
         )
+            console.log(symbolDictionary[oneCallData.daily[0].weather[0].icon]);
 
         let dayTwo = $("#day-two").html(
             '<h5>' + moment().add(2, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[1].temp.day + ' ºc </p>' +
             '<p class="five-day">Humidity: ' + oneCallData.daily[1].humidity + ' % </p>' +
-            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[1].weather[0].icon + '.png" />'
+            '<i class="wi '+ symbolDictionary[oneCallData.daily[1].weather[0].icon] +' forecast-icon"></i>'
+            // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[1].weather[0].icon + '.png" />'
         )
+            console.log(symbolDictionary[oneCallData.daily[1].weather[0].icon]);
 
         let dayThree = $("#day-three").html(
             '<h5>' + moment().add(3, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[2].temp.day + ' ºc </p>' +
             '<p class="five-day">Humidity: ' + oneCallData.daily[2].humidity + ' % </p>' +
-            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[2].weather[0].icon + '.png" />'
+            '<i class="wi '+ symbolDictionary[oneCallData.daily[2].weather[0].icon] +' forecast-icon"></i>'
+            // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[2].weather[0].icon + '.png" />'
         )
+            console.log(symbolDictionary[oneCallData.daily[0].weather[0].icon]);
 
         let dayFour = $("#day-four").html(
             '<h5>' + moment().add(4, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[3].temp.day + ' ºc </p>' +
             '<p class="five-day">Humidity: ' + oneCallData.daily[3].humidity + ' % </p>' +
-            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[3].weather[0].icon + '.png" />'
+            '<i class="wi '+ symbolDictionary[oneCallData.daily[3].weather[0].icon] +' forecast-icon"></i>'
+            // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[3].weather[0].icon + '.png" />'
         )
 
         let dayFive = $("#day-five").html(
             '<h5>' + moment().add(5, 'days').format('dddd') + '</h5>' +
             '<p class="five-day">Temp: ' + oneCallData.daily[4].temp.day + ' ºc </p>' +
             '<p class="five-day">Humidity: ' + oneCallData.daily[4].humidity + ' % </p>' +
-            '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[4].weather[0].icon + '.png" />'
+            '<i class="wi '+ symbolDictionary[oneCallData.daily[4].weather[0].icon] +' forecast-icon "></i>'
+            // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[4].weather[0].icon + '.png" />'
         )
 
     }

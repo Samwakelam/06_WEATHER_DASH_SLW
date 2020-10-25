@@ -227,3 +227,20 @@ p.five-day {
 .hide{
     visibility: hidden;
 }
+
+/* Icon styling */ 
+
+.forecast-icon {
+    font-size: 200%;
+    margin: 10px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.main-icon {
+    color: rgb(225, 128, 41);
+    display: block;
+    float: right;
+    font-size: 200%;
+    margin: 20px;
+}
