@@ -40,12 +40,9 @@
         const citySearchButton  =$("#search-btn")
         citySearchButton.click(getSearchBarValue);
         // citySearchButton.click(saveCitySearch);
-
+    
         const cityListItem      =$("#previous-searches");
         cityListItem.on("click", "li",historyButtonClicked);
-
-        const dropdownHistory   = $("#dropdown-history");
-        dropdownHistory.on("click", "a",historyButtonClicked);
     
         const fetchStatus       = $("#fetch-status");
     
@@ -213,44 +210,44 @@
             // get day 1 and add value 0 
             let dayOne = $("#day-one").html(
                 '<h5>' + moment().add(1, 'days').format('dddd') + '</h5>' +
-                '<i class="wi '+ symbolDictionary[oneCallData.daily[0].weather[0].icon] +' forecast-icon"></i>' +
                 '<p class="five-day">Temp: ' + oneCallData.daily[0].temp.day + ' ºc </p>' +
-                '<p class="five-day">Humidity: ' + oneCallData.daily[0].humidity + ' % </p>' 
+                '<p class="five-day">Humidity: ' + oneCallData.daily[0].humidity + ' % </p>' +
+                '<i class="wi '+ symbolDictionary[oneCallData.daily[0].weather[0].icon] +' forecast-icon"></i>'
                 // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[0].weather[0].icon + '.png" />'
             )
                 console.log(symbolDictionary[oneCallData.daily[0].weather[0].icon]);
     
             let dayTwo = $("#day-two").html(
                 '<h5>' + moment().add(2, 'days').format('dddd') + '</h5>' +
-                '<i class="wi '+ symbolDictionary[oneCallData.daily[1].weather[0].icon] +' forecast-icon"></i>' +
                 '<p class="five-day">Temp: ' + oneCallData.daily[1].temp.day + ' ºc </p>' +
-                '<p class="five-day">Humidity: ' + oneCallData.daily[1].humidity + ' % </p>' 
+                '<p class="five-day">Humidity: ' + oneCallData.daily[1].humidity + ' % </p>' +
+                '<i class="wi '+ symbolDictionary[oneCallData.daily[1].weather[0].icon] +' forecast-icon"></i>'
                 // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[1].weather[0].icon + '.png" />'
             )
                 console.log(symbolDictionary[oneCallData.daily[1].weather[0].icon]);
     
             let dayThree = $("#day-three").html(
                 '<h5>' + moment().add(3, 'days').format('dddd') + '</h5>' +
-                '<i class="wi '+ symbolDictionary[oneCallData.daily[2].weather[0].icon] +' forecast-icon"></i>' +
                 '<p class="five-day">Temp: ' + oneCallData.daily[2].temp.day + ' ºc </p>' +
-                '<p class="five-day">Humidity: ' + oneCallData.daily[2].humidity + ' % </p>' 
+                '<p class="five-day">Humidity: ' + oneCallData.daily[2].humidity + ' % </p>' +
+                '<i class="wi '+ symbolDictionary[oneCallData.daily[2].weather[0].icon] +' forecast-icon"></i>'
                 // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[2].weather[0].icon + '.png" />'
             )
                 console.log(symbolDictionary[oneCallData.daily[0].weather[0].icon]);
     
             let dayFour = $("#day-four").html(
                 '<h5>' + moment().add(4, 'days').format('dddd') + '</h5>' +
-                '<i class="wi '+ symbolDictionary[oneCallData.daily[3].weather[0].icon] +' forecast-icon"></i>' +
                 '<p class="five-day">Temp: ' + oneCallData.daily[3].temp.day + ' ºc </p>' +
-                '<p class="five-day">Humidity: ' + oneCallData.daily[3].humidity + ' % </p>' 
+                '<p class="five-day">Humidity: ' + oneCallData.daily[3].humidity + ' % </p>' +
+                '<i class="wi '+ symbolDictionary[oneCallData.daily[3].weather[0].icon] +' forecast-icon"></i>'
                 // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[3].weather[0].icon + '.png" />'
             )
     
             let dayFive = $("#day-five").html(
                 '<h5>' + moment().add(5, 'days').format('dddd') + '</h5>' +
-                '<i class="wi '+ symbolDictionary[oneCallData.daily[4].weather[0].icon] +' forecast-icon "></i>' +
                 '<p class="five-day">Temp: ' + oneCallData.daily[4].temp.day + ' ºc </p>' +
-                '<p class="five-day">Humidity: ' + oneCallData.daily[4].humidity + ' % </p>' 
+                '<p class="five-day">Humidity: ' + oneCallData.daily[4].humidity + ' % </p>' +
+                '<i class="wi '+ symbolDictionary[oneCallData.daily[4].weather[0].icon] +' forecast-icon "></i>'
                 // '<img src="http://openweathermap.org/img/w/' + oneCallData.daily[4].weather[0].icon + '.png" />'
             )
     
@@ -326,8 +323,7 @@
             for (let index = 0; index < searchHistory.length; index++) {
                 console.log("index =", index);
                 let titledSearchHistory = titleCase(searchHistory[index]);
-                cityListItem.prepend('<li class="list-group-item">' + titledSearchHistory + '</li>');
-                dropdownHistory.prepend('<a class="dropdown-item">' + titledSearchHistory + '</a>');
+                cityListItem.prepend('<li class="list-group-item">' + titledSearchHistory + '</li>')
             }
     
         }

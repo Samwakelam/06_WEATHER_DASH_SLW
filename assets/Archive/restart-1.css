@@ -17,7 +17,6 @@ body {
 
 /* Main styling  */
 
-
 main {
     min-width: 90%;
     min-height: 90vh;
@@ -27,7 +26,7 @@ main {
 
 div.row {
     width: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     padding: 0;
     margin: 0;  
 }
@@ -37,20 +36,18 @@ div.row {
 }
 
 div#content.row {
-    /* border: 5px solid grey; */
     width: 100%;
-    min-height: 88vh;
+    min-height: 88%;
     padding: 0;
     margin: 0;
-    /* position: relative; */
     bottom: 0;
 }
 
 /* Header Styling */
 header {
     background-color:rgb(255, 255, 255, 0.3);
-    /* position: relative; */
-    height: 20%;
+    position: relative;
+    height: 12%;
     width: 100%;
 }
 
@@ -59,16 +56,16 @@ h1 {
     margin: 0;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 20px;
     font-family: 'Comfortaa', cursive;
 }
 
 /* Aside Styling */
 aside {
     /* border: 5px solid blue; */
-    min-height: 100%;
+    /* max-height: 100%; */
 }
-.col-md-4, .col-md-8 {
+
+.col-md-4 {
     padding: 0;
 }
 
@@ -80,8 +77,8 @@ div#aside {
     border: 5px solid black;
     background-image: url(../images/desert_sun_narrow_web.png);
     background-size: cover;
-    margin: 5% 0 0% 0%;
-    min-height: 97%;
+    /* height: 95%; */
+    margin: 20px 5px 0 0;
     padding: 10px;
     box-shadow: 0px 0px 10px 5px  rgba(117, 97, 79, 0.5);
 }
@@ -97,6 +94,7 @@ div#aside {
     color: rgba(225, 128, 41, 1);
 }
 
+
 p#fetch-status {
     font-size: 75%;
     margin: 0;
@@ -110,9 +108,11 @@ p#fetch-status {
 .list-group-item:hover {
     background-color:rgb(255, 255, 255, 0.6);  
 }
+
 .list-group-item:active {
     background-color:rgb(225, 128, 41, 0.4);
 }
+
 .list-group-item.active {
     background-color:rgba(225, 128, 41, 0.4);
     border-color: rgba(225, 128, 41, 1);
@@ -124,12 +124,17 @@ p#fetch-status {
 
 section {
     /* border: 5px solid red; */
-   min-height: 100%;
+    /* max-height: 100%; */
+}
+
+.col-md-8 {
+    padding: 0;
 }
 
 h3 {
     font-family: 'Comfortaa', cursive;
 }
+
 p {
     /* background-color:rgb(255, 255, 255, 0.2); */
     font-family: 'Montserrat','Open Sans', sans-serif;
@@ -138,22 +143,28 @@ p {
 p>span.units {
     font-size: 80%;
 }
+
 p>span.uv-index {
     padding: 2px;
     border-radius: 5px;
 }
+
 p>span.uv-index-low {
     background-color: rgba(170, 225, 41, 0.6);
 }
+
 p>span.uv-index-moderate {
     background-color: rgba(225, 197, 41, 0.6);
 }
+
 p>span.uv-index-high {
     background-color: rgba(225, 128, 41, 0.6);
 }
+
 p>span.uv-index-vhigh {
     background-color: rgba(225, 69, 41, 0.6);
 }
+
 p>span.uv-index-extream {
     background-color: rgba(225, 41, 87, 0.6);
 }
@@ -163,12 +174,15 @@ article {
     max-width: 100%;
     min-height: 50%;
     margin: 0;
+    position: relative;
 }
 
 div.article {
     border: 5px solid black;
-    width: 100%;
-    justify-content: right;
+    /* background-color: white; */
+    height: 90%;
+    width: 95%;
+    position: absolute;
     padding: 10px;
     box-shadow: 0px 0px 10px 5px  rgba(117, 97, 79, 0.5);
 }
@@ -176,18 +190,14 @@ div.article {
 div#article-top {
     background-image: url(../images/desert_sun_sky_web.png);
     background-size: cover;
-    margin: 2.5% 0 2.5% 2.5%;
-    min-height: 100%;
+    margin: 20px 0 2.5px 20px;
 }
 
 div#article-bottom {
     background-image: url(../images/desert_sun_sand_web.png);
     background-size: cover;
-    margin: 2.5% 0 0% 2.5%;
-}
-
-div.row.fit-content {
-    min-height:80% ;
+    margin: 5px 0 0px 20px;
+    bottom: 10px;
 }
 
 div.col-sm {
@@ -195,6 +205,10 @@ div.col-sm {
     border: 1px solid rgba(225, 128, 41, 1);
     padding: 2px;
     margin: 2px;
+}
+
+div.row.fit-content {
+    min-height:80% ;
 }
 
 h5 {
@@ -239,143 +253,104 @@ div#history-menu>button {
 }
 
 
-/* MEDIA QUERIES */
+/* media queries - large phone */
 
-/* media queries - small Phones */
+@media screen and (max-width: 576px) {
 
-@media screen and (max-width: 630px) {
-
-    ul#previous-searches {
-        display: none;
+    h1 {
+        font-size: 2em;
+        padding: 10px;
     }
 
-    .col-sm {
-        flex-basis: unset;
-    }
-
-    .forecast-icon {
-        float: right;
+    div#content {
         position: relative;
     }
 
-    aside {
-        min-height: min-content;
-        margin-bottom: 5px;
-    }
-    
     div#aside {
-        margin: 2% 0 0% 0%;
-        height: 95%;
+        margin: 10px 5px;
+        width: 100%;
+        display: block;
     }
-
-    section {
-        min-height: 100%;
-     }
- 
-     article {
-         max-width: 100%;
-         min-height: min-content;
-         margin: 0;
-     }
-     
-     div.article {
-         width: 100%;
-         
-     }
-     
-     div#article-top {
-         margin: 2.5% 0 0% 0;
-         min-height: 100%;
-     }
-     
-     div#article-bottom {
-        margin:2.5% 0 0% 0%;
-     }
-
-} 
-
-/* media queries - Large Phones */
-
-@media screen and (min-width: 630px) and (max-width: 768px) {
 
     ul#previous-searches {
         display: none;
     }
-    
-    aside {
-        min-height: min-content;
-        margin-bottom: 5px;
-    }
-    
-    div#aside {
-        margin: 2% 0 0% 0%;
-    }
-
-    section {
-       min-height: 100%;
-    }
 
     article {
-        max-width: 100%;
-        min-height: 50%;
-        margin: 0;
-    }
-    
-    div.article {
+        display: block;
         width: 100%;
-        
+        height: min-content;
+        margin: 10px 5px;
+    }
+
+    div.article-top {
+        position: relative;
     }
     
-    div#article-top {
-        margin: 2.5% 0 0% 0;
-        min-height: 100%;
-    }
-    
-    div#article-bottom {
-        margin: 2.5% 0 0% 0%;
+    .forecast-icon {
+        float: right;
+        position: relative;
     }
 
 }
 
-/* media queries - TABLETS */
+/* media queries - ipad and above */
 
-@media screen and (min-width: 769px) and (max-width: 949px)  {
+@media screen and (max-width: 799px) {
 
-    div#aside {
-        height: 95%;
+    .col-md-4 {
+        flex: unset;
+        max-width: 100%;
+        height: max-content;
+        /* position: relative; */
     }
 
-    div#history-menu {
+    .col-md-8 {
+        flex: unset;
+        max-width: 100%;
+        height: 70%;
+        /* position: relative; */
+    }
+    
+    div#content.row {
+        height: 100vh;
+    }
+
+    div#aside {
+        /* height: unset; */
+        margin: 20px 0;
+        padding: 10px;
+    }
+
+    div#article-top.article {
+        margin: 0;
+        width: 100%;
+    }
+
+    div#article-bottom.article {
+        margin: 0;
+        width: 100%;
+    }
+
+
+    ul#previous-searches {
         display: none;
     }
 
-    .col-sm {
-        flex-basis: unset;
-    }
-
-    .forecast-icon {
-        float: right;
-        position: relative;
-    }
-
-    section {
-       min-height: 100%;
-    }
-
     article {
-        min-height: min-content;
+        min-height: 50%;
+        width: 100%;
+    }
+
+    .article {
+        margin: 0;
     }
     
-    
-    div#article-bottom {
-        margin:0% 0 0% 2.5%;
-    }
-        
 }
 
 /* media queries - Computer screens */
 
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 800px) {
 
     div#aside {
         height: 95%;
