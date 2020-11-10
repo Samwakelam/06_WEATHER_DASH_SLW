@@ -64,6 +64,7 @@ History list converts to a dropdown menu when the screen is smaller.
 
 ![Screenshot showing update](assets/images/screenFull.png)
 
+(Update 10/11/2020) Homework Feedback #1 has been resolved. Dropdown menu shows single search result and doe not duplicate. You cannot search an empty string, the placeholder text will alert you to this if you try. The last searched city is displayed on your return. 
 
 ## Credits 
 
