@@ -52,7 +52,18 @@ A really neat feature would be to change the background with the time of day or 
 ## Updates 
 
 (Update 25/10/2020) Icons updated using Weather Icons 222 Weather Themed Icons and CSS. (Flowers,E. Bischoff,L.(2017).Weather Icons 222 Weather Themed Icons and CSS). erikflowers.github.io. https://erikflowers.github.io/weather-icons/.)
+
 ![Screenshot showing update](assets/images/screenshot-update-symbols.png)
+
+(Update 26/10/2020) Media Querys improved, slight discrepencies in the finishing of a couple of the divs, struggling to iron out, over all the background remains covered and all content is displayed. 
+History list converts to a dropdown menu when the screen is smaller. 
+
+![Screenshot showing update](assets/images/IphoneFull.png)
+
+![Screenshot showing update](assets/images/ipadProFull.png)
+
+![Screenshot showing update](assets/images/screenFull.png)
+
 
 ## Credits 
 

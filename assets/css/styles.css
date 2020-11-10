@@ -296,7 +296,7 @@ div#history-menu>button {
 
 /* media queries - Large Phones */
 
-@media screen and (min-width: 630px) and (max-width: 768px) {
+@media screen and (min-width: 630px) and (max-width: 750px) {
 
     ul#previous-searches {
         display: none;
@@ -328,7 +328,7 @@ div#history-menu>button {
     
     div#article-top {
         margin: 2.5% 0 0% 0;
-        min-height: 100%;
+        
     }
     
     div#article-bottom {
@@ -339,10 +339,14 @@ div#history-menu>button {
 
 /* media queries - TABLETS */
 
-@media screen and (min-width: 769px) and (max-width: 949px)  {
+@media screen and (min-width: 750px) and (max-width: 950px)  {
+
+    main{
+        max-height: 85vh;
+    }
 
     div#aside {
-        height: 95%;
+        min-height: 85%;
     }
 
     div#history-menu {
@@ -368,7 +372,8 @@ div#history-menu>button {
     
     
     div#article-bottom {
-        margin:0% 0 0% 2.5%;
+        margin:0% 0 5% 2.5%;
+        
     }
         
 }
@@ -388,5 +393,6 @@ div#history-menu>button {
     .col-sm {
         flex-basis: 0;
     }
+    
 
 }
